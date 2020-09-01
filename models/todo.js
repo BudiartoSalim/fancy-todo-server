@@ -16,19 +16,29 @@ module.exports = (sequelize, DataTypes) => {
   Todo.init({
     title: {
       type: DataTypes.STRING,
-      validate:{allowNull: {args: false, msg: "Title cannot be empty"}}},
+      allowNull: false,
+      validate:{
+        notNull: {args: true, msg: "Title cannot be empty"},
+        notEmpty: {args: true, msg: "Title cannot be empty"},
+        }},
     description: DataTypes.STRING,
     status: {
       type: DataTypes.STRING,
-      validate:{allowNull: {args: false, msg: "Status cannot be empty"}}},
+      allowNull: false,
+      validate:{notNull: {args: true, msg: "Status cannot be empty"}}},
     due_date: {
       type: DataTypes.DATE,
+      allowNull: false,
       validate:{
-        allowNull: {args: false, msg: "Due Date cannot be empty"},
+        notNull: {args: true, msg: "Due Date cannot be empty"},
+        notEmpty: {args: true, msg: "Title cannot be empty"},
         isFutureDate(due_date){
-          let newDate = new Date();
-          if (due_date.now() < newDate.now()){
-            throw new Error('Date must be a future date.')
+            if (due_date){
+            if (due_date.getTime() < Date.now()){
+              throw new Error('Date must be a future date.')
+            }
+          } else {
+            throw new Error('Date must not be empty')
           }
         }
       }

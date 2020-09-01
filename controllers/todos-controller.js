@@ -17,7 +17,7 @@ class TodosController{
             description: req.body.description,
             status: req.body.status,
             due_date: req.body.due_date,
-            UserId: "1" //hardcoded for now, will be refactored with userId from session later
+            UserId: req.body.UserId //hardcoded for now, will be refactored with userId from session later
         })
         .then((data)=>{
             res.status(201).json(data);
