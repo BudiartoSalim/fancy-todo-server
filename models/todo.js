@@ -17,24 +17,26 @@ module.exports = (sequelize, DataTypes) => {
     title: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate:{
-        notNull: {args: true, msg: "Title cannot be empty"},
-        notEmpty: {args: true, msg: "Title cannot be empty"},
-        }},
+      validate: {
+        notNull: { args: true, msg: "Title cannot be empty" },
+        notEmpty: { args: true, msg: "Title cannot be empty" },
+      }
+    },
     description: DataTypes.STRING,
     status: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate:{notNull: {args: true, msg: "Status cannot be empty"}}},
+      validate: { notNull: { args: true, msg: "Status cannot be empty" } }
+    },
     due_date: {
       type: DataTypes.DATE,
       allowNull: false,
-      validate:{
-        notNull: {args: true, msg: "Due Date cannot be empty"},
-        notEmpty: {args: true, msg: "Title cannot be empty"},
-        isFutureDate(due_date){
-            if (due_date){
-            if (due_date.getTime() < Date.now()){
+      validate: {
+        notNull: { args: true, msg: "Due Date cannot be empty" },
+        notEmpty: { args: true, msg: "Title cannot be empty" },
+        isFutureDate(due_date) {
+          if (due_date) {
+            if (due_date.getTime() < Date.now()) {
               throw new Error('Date must be a future date.')
             }
           } else {
