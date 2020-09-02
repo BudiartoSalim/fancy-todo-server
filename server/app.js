@@ -3,7 +3,9 @@ const app = express();
 const PORT = 3000;
 const router = require('./routes/index.js');
 require('dotenv').config();
+const cors = require('cors');
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

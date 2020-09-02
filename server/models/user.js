@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notNull: { args: true, msg: "Email cannot be empty." },
-        unique: { args: true, msg: "This email is already used." },
+        //  unique: { args: true, msg: "This email is already used." }, //this code causes error; prob wrong syntax
         isEmail: { args: true, msg: "Input must be in email format." }
       }
     },

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos App</title>
+</head>
+
+<body>
+    <h1>To-do App!</h1>
+    <div id="loginPage" class="page">
+        <h4 style="color:green; display:none" id="successRegisMsg" class="page">Registration successful!</h4>
+        <h4 style="color:red; display:none" id="failRegisMsg" class="page">Registration failed!</h4>
+        <table>
+            <form onsubmit="login(event)" method="POST">
+                <td>
+                    <label for="email_login">Email: </label>
+                </td>
+                <td>
+                    <input type="text" id="email_login" name="email_login">
+                </td>
+                <tr>
+                    <td>
+                        <label for="password_login">Password: </label>
+                    </td>
+                    <td>
+                        <input type="password" id="password_login" name="password_login">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Login">
+                    </td>
+                    <td>
+                        <input type="button" value="Register" onclick="registerPage(event)">
+                    </td>
+                </tr>
+            </form>
+        </table>
+    </div>
+
+
+
+    <div id="registerPage" style="display: none;" class="page">
+        <h2>Registration</h2>
+        <table>
+            <form onsubmit="register(event)" method="POST">
+                <td>
+                    <label for="email_register">Email: </label>
+                </td>
+                <td>
+                    <input type="text" id="email_register" name="email_register">
+                </td>
+                <tr>
+                    <td>
+                        <label for="name_register">Name: </label>
+                    </td>
+                    <td>
+                        <input type="text" id="name_register" name="name_register">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="password_register">Password: </label>
+                    </td>
+                    <td>
+                        <input type="password" id="password_register" name="password_register">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Register">
+                    </td>
+                    <td>
+                        <input type="button" value="Back" onclick="loginPage(event)">
+                    </td>
+                </tr>
+            </form>
+        </table>
+    </div>
+
+    <div id="logged_in_home" display="none" class="page">
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
+        integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="
+        crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
