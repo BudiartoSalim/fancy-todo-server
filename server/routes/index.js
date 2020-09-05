@@ -4,7 +4,7 @@ const todosRouter = require('./todos-router.js');
 const usersRouter = require('./users-router.js');
 
 router.get('/', (req, res) => {
-    res.send('ini home')
+  res.send('ini home')
 })
 
 router.use('/todos', todosRouter);

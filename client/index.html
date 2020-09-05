@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todos App</title>
+    <script src="https://apis.google.com/js/platform.js"></script>
+    <meta name="google-signin-client_id"
+        content="416868084578-5lpgni9ohjh9gp48br1h2vi2dhqg0klv.apps.googleusercontent.com">
 </head>
 
 <body>
@@ -38,9 +41,8 @@
                 </tr>
             </form>
         </table>
+        <div class="g-signin2" data-onsuccess="onSignIn" onclick="onGoogleSignIn"></div>
     </div>
-
-
 
     <div id="registerPage" style="display: none;" class="page">
         <h2>Registration</h2>
@@ -80,9 +82,57 @@
         </table>
     </div>
 
-    <div id="logged_in_home" display="none" class="page">
-
+    <div class="page" display="none" id="create-todo">
+        <table>
+            <form onsubmit="createTodo(event)" method="POST">
+                <td>
+                    <label for="todo-title">Title: </label>
+                </td>
+                <td>
+                    <input type="text" id="todo-title" name="todo-title">
+                </td>
+                <tr>
+                    <td>
+                        <label for="todo-desc">Description: </label>
+                    </td>
+                    <td>
+                        <input type="text" id="todo-desc" name="todo-desc">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="todo-duedate">Due Date: </label>
+                    </td>
+                    <td>
+                        <input type="date" id="todo-duedate" name="todo-duedate">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="create-todo">
+                    </td>
+                    <td>
+                        <input type="button" value="Back" onclick="checkAuth()">
+                    </td>
+                </tr>
+            </form>
+        </table>
     </div>
+
+    <div class="page" display="none" id="edit-todo">
+        <table id="edit-table">
+
+        </table>
+    </div>
+
+    <!-- DASHBOARD FOR LOGGED IN USER -->
+    <div id="logged_in_home" display="none" class="page">
+        <h1 id="welcome-header"></h1>
+        <input type="button" value="Create New Todo" onclick="createTodoPage()">
+        <table id="task-list" border="1px">
+        </table>
+    </div>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"
         integrity="sha512-WNLxfP/8cVYL9sj8Jnp6et0BkubLP31jhTG9vhL/F5uEZmg5wEzKoXp1kJslzPQWwPT1eyMiSxlKCgzHLOTOTQ=="

@@ -19,13 +19,22 @@ module.exports = (sequelize, DataTypes) => {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: { args: true, msg: "Email cannot be used." },
       validate: {
         notNull: { args: true, msg: "Email cannot be empty." },
-        //  unique: { args: true, msg: "This email is already used." }, //this code causes error; prob wrong syntax
         isEmail: { args: true, msg: "Input must be in email format." }
       }
     },
-    password: DataTypes.STRING
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: { args: [6, 30], msg: "PasswordLength" }
+      }
+    },
+    whatsapp: {
+      type: DataTypes.STRING
+    }
   }, {
     sequelize,
     modelName: 'User',
